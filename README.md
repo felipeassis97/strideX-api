@@ -1,1 +1,0 @@
-# snapshoes-api
