@@ -1,11 +1,11 @@
-#Usa uma imagem externa de um JDK de acordo com a necessidade do projeto
+# Select image jdk project
 FROM openjdk
 
-#Porta que a aplicação estara exposta para o container (user -> container -> application)
+# Docker port (user -> container -> application)
 EXPOSE 8080
 
-#Path do .jar and rename file to snapshoes
+# Path .jar and rename file to snapshoes
 ADD /target/store-0.0.1-SNAPSHOT.jar snapshoes.jar
 
-#Comando para subir a aplicacao
+# Executed application (main docker)
 ENTRYPOINT ["java", "-jar", "snapshoes.jar"]
