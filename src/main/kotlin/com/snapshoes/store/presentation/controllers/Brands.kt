@@ -16,5 +16,4 @@ class Brands(
 
     @GetMapping("/{id}")
     fun fetchById(@PathVariable id: Long) = service.getBrandById(id)
-
 }
