@@ -16,5 +16,4 @@ class Genres(
 
     @GetMapping("/{id}")
     fun fetchById(@PathVariable id: Long) = service.getGenreById(id)
-
 }

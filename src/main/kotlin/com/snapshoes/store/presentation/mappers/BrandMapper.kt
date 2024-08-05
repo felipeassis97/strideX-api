@@ -11,8 +11,6 @@ class BrandMapper : Mapper<Brand, BrandDto> {
         return BrandDto(
             id = t.id,
             name = t.name,
-            createdAt = t.createdAt,
-            updatedAt = t.updatedAt,
         )
     }
 }
