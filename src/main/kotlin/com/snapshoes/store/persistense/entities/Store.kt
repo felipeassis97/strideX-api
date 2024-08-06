@@ -14,6 +14,10 @@ data class Store(
     @ManyToOne
     @JoinColumn(name = "address_id", nullable = false)
     val address: Address,
+
+    @OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    val products: List<Product> = emptyList(),
+
     val createdAt: LocalDateTime? = null,
     val updatedAt: LocalDateTime? = null
 ) {
