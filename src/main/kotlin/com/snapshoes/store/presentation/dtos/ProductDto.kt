@@ -1,7 +1,5 @@
 package com.snapshoes.store.presentation.dtos
 
-import com.snapshoes.store.ProductGenreDto
-
 data class ProductDto(
     val id: Long? = null,
     val title: String,

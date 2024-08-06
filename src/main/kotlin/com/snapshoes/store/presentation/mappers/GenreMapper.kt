@@ -1,9 +1,9 @@
 package com.snapshoes.store.presentation.mappers
-
-import Mapper
-import org.springframework.stereotype.Component
 import com.snapshoes.store.persistense.entities.Genre
 import com.snapshoes.store.presentation.dtos.GenreDto
+import Mapper
+
+import org.springframework.stereotype.Component
 
 @Component
 class GenreMapper : Mapper<Genre, GenreDto> {

@@ -1,6 +1,6 @@
 package com.snapshoes.store.presentation.controllers
-
 import com.snapshoes.store.service.BrandService
+
 import org.springframework.web.bind.annotation.*
 import com.snapshoes.store.presentation.dtos.BrandDto
 

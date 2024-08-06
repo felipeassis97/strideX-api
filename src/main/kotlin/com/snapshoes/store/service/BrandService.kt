@@ -1,11 +1,10 @@
 package com.snapshoes.store.service
-
-import org.springframework.stereotype.Service
 import com.snapshoes.store.presentation.dtos.BrandDto
 import com.snapshoes.store.presentation.mappers.BrandMapper
 import com.snapshoes.store.config.exceptions.NotFoundException
 import com.snapshoes.store.persistense.repositories.BrandRepository
 
+import org.springframework.stereotype.Service
 
 @Service
 class BrandService(

@@ -1,12 +1,13 @@
 package com.snapshoes.store.service
-
-import com.snapshoes.store.config.exceptions.NotFoundException
-import com.snapshoes.store.persistense.repositories.StoreRepository
 import com.snapshoes.store.presentation.dtos.StoreDto
 import com.snapshoes.store.presentation.mappers.StoreMapper
+import com.snapshoes.store.config.exceptions.NotFoundException
+import com.snapshoes.store.persistense.repositories.StoreRepository
+
+import org.springframework.data.domain.Page
 import org.springframework.stereotype.Service
 import org.springframework.data.domain.Pageable
-import org.springframework.data.domain.Page
+
 
 @Service
 class StoreService(

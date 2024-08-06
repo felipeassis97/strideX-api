@@ -1,6 +1,4 @@
-package com.snapshoes.store
-
-import com.snapshoes.store.presentation.dtos.GenreDto
+package com.snapshoes.store.presentation.dtos
 
 data class ProductGenreDto(
     val productId: Long?,
