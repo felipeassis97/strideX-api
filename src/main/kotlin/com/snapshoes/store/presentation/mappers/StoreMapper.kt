@@ -1,9 +1,9 @@
 package com.snapshoes.store.presentation.mappers
-
-import Mapper
-import org.springframework.stereotype.Component
-import com.snapshoes.store.presentation.dtos.*
 import com.snapshoes.store.persistense.entities.*
+import com.snapshoes.store.presentation.dtos.*
+import Mapper
+
+import org.springframework.stereotype.Component
 
 @Component
 class StoreMapper(

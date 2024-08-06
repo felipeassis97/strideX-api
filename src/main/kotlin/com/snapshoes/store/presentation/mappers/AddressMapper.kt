@@ -1,10 +1,9 @@
 package com.snapshoes.store.presentation.mappers
-
-import Mapper
-import org.springframework.stereotype.Component
 import com.snapshoes.store.persistense.entities.Address
 import com.snapshoes.store.presentation.dtos.AddressDto
+import Mapper
 
+import org.springframework.stereotype.Component
 
 @Component
 class AddressMapper: Mapper<Address, AddressDto> {

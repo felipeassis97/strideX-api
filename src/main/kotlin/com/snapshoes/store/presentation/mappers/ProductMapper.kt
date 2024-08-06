@@ -1,12 +1,12 @@
 package com.snapshoes.store.presentation.mappers
-
-import Mapper
-import com.snapshoes.store.ProductGenreDto
-import com.snapshoes.store.persistense.entities.*
-import com.snapshoes.store.presentation.dtos.ProductDto
+import com.snapshoes.store.presentation.dtos.ProductGenreDto
 import com.snapshoes.store.presentation.dtos.ProductImageDto
 import com.snapshoes.store.presentation.dtos.ProductSizeDto
+import com.snapshoes.store.presentation.dtos.ProductDto
 import com.snapshoes.store.presentation.dtos.SizeDto
+import Mapper
+
+import com.snapshoes.store.persistense.entities.*
 import org.springframework.stereotype.Component
 
 @Component
