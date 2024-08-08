@@ -2,6 +2,7 @@ package com.snapshoes.store.persistense.entities
 
 import java.time.LocalDate
 import jakarta.persistence.*
+import java.time.LocalDateTime
 
 
 @Entity
@@ -16,9 +17,10 @@ data class Address(
     val zipcode: String,
     val lat: Double,
     val lng: Double,
-    val createdAt: LocalDate?,
-    val updatedAt: LocalDate?,
-){
+    val createdAt: LocalDateTime?,
+    val updatedAt: LocalDateTime?,
+)
+{
     constructor() : this(
         id = null,
         street = "", neighborhood = "",

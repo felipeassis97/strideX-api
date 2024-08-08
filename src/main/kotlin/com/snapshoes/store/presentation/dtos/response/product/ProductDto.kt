@@ -1,4 +1,8 @@
-package com.snapshoes.store.presentation.dtos
+package com.snapshoes.store.presentation.dtos.response.product
+
+import com.snapshoes.store.presentation.dtos.response.common.BrandDto
+import com.snapshoes.store.presentation.dtos.response.common.GenreDto
+import com.snapshoes.store.presentation.dtos.response.common.SizeDto
 
 data class ProductDto(
     val id: Long? = null,

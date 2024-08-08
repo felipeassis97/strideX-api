@@ -1,4 +1,4 @@
-package com.snapshoes.store.presentation.dtos
+package com.snapshoes.store.presentation.dtos.response.common
 
 data class GenreDto(
     val id: Long?,

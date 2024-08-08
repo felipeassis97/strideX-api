@@ -11,9 +11,9 @@ data class Store(
     val name: String,
     val description: String,
     val logo: String?,
-    @ManyToOne
-    @JoinColumn(name = "address_id", nullable = false)
-    val address: Address,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
+    val address: Address? = null,
 
     @OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     val products: List<Product> = emptyList(),

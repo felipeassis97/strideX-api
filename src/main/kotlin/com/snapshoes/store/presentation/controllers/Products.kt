@@ -1,6 +1,6 @@
 package com.snapshoes.store.presentation.controllers
 import com.snapshoes.store.service.ProductService
-import com.snapshoes.store.presentation.dtos.ProductDto
+import com.snapshoes.store.presentation.dtos.response.product.ProductDto
 
 import org.springframework.data.domain.Page
 import org.springframework.http.ResponseEntity
@@ -17,7 +17,7 @@ class Products(
     private val service: ProductService
 ) {
     @GetMapping
-    fun fetchAll(
+    fun fetchAllProducts(
         @RequestParam(required = false) storeId: Long?,
         @RequestParam(required = false) brandId: Long?,
         @RequestParam(required = false) name: String?,

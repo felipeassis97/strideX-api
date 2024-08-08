@@ -1,5 +1,5 @@
 package com.snapshoes.store.presentation.controllers
-import com.snapshoes.store.presentation.dtos.GenreDto
+import com.snapshoes.store.presentation.dtos.response.common.GenreDto
 import com.snapshoes.store.service.GenreService
 
 import org.springframework.web.bind.annotation.*
@@ -11,10 +11,10 @@ class Genres(
     private val service: GenreService
 ) {
     @GetMapping
-    fun fetchAll(): List<GenreDto> {
+    fun fetchAllGenres(): List<GenreDto> {
         return service.getGenres()
     }
 
     @GetMapping("/{id}")
-    fun fetchById(@PathVariable id: Long) = service.getGenreById(id)
+    fun fetchGenreById(@PathVariable id: Long) = service.getGenreById(id)
 }

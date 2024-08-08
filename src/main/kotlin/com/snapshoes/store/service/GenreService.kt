@@ -1,6 +1,6 @@
 package com.snapshoes.store.service
-import com.snapshoes.store.presentation.dtos.GenreDto
-import com.snapshoes.store.presentation.mappers.GenreMapper
+import com.snapshoes.store.presentation.dtos.response.common.GenreDto
+import com.snapshoes.store.presentation.dtos.mappers.common.GenreMapper
 import com.snapshoes.store.config.exceptions.NotFoundException
 import com.snapshoes.store.persistense.repositories.GenreRepository
 
