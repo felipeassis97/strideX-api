@@ -17,7 +17,7 @@ CREATE TABLE store (
     name VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     logo VARCHAR(255),
-    address_id BIGINT NOT NULL,
+    address_id BIGINT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT fk_store_address FOREIGN KEY (address_id) REFERENCES address(id)

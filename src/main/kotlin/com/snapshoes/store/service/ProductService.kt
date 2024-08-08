@@ -1,6 +1,6 @@
 package com.snapshoes.store.service
-import com.snapshoes.store.presentation.dtos.ProductDto
-import com.snapshoes.store.presentation.mappers.ProductMapper
+import com.snapshoes.store.presentation.dtos.response.product.ProductDto
+import com.snapshoes.store.presentation.dtos.mappers.product.ProductMapper
 import com.snapshoes.store.persistense.repositories.ProductRepository
 import com.snapshoes.store.persistense.specifications.ProductSpecifications
 

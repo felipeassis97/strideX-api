@@ -1,6 +1,6 @@
 package com.snapshoes.store.service
-import com.snapshoes.store.presentation.dtos.BrandDto
-import com.snapshoes.store.presentation.mappers.BrandMapper
+import com.snapshoes.store.presentation.dtos.response.common.BrandDto
+import com.snapshoes.store.presentation.dtos.mappers.common.BrandMapper
 import com.snapshoes.store.config.exceptions.NotFoundException
 import com.snapshoes.store.persistense.repositories.BrandRepository
 
@@ -11,7 +11,7 @@ class BrandService(
     private val brandRepository: BrandRepository,
     private val brandMapper: BrandMapper,
 
-) {
+    ) {
     fun getBrands() : List<BrandDto> {
         val brands = brandRepository.findAll()
         return brands.map { e ->  brandMapper.map(e)}

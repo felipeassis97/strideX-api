@@ -1,7 +1,6 @@
-package com.snapshoes.store.presentation.mappers
+package com.snapshoes.store.presentation.dtos.mappers.common
 import com.snapshoes.store.persistense.entities.Brand
-import com.snapshoes.store.presentation.dtos.BrandDto
-import Mapper
+import com.snapshoes.store.presentation.dtos.response.common.BrandDto
 
 import org.springframework.stereotype.Component
 

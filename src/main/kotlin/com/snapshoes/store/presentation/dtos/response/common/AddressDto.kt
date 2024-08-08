@@ -1,6 +1,7 @@
-package com.snapshoes.store.presentation.dtos
+package com.snapshoes.store.presentation.dtos.response.common
 
 data class AddressDto(
+    val id: Long?,
     val street: String,
     val neighborhood: String,
     val city: String,
