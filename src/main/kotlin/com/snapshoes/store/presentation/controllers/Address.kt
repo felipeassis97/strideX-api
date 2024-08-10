@@ -1,7 +1,7 @@
 package com.snapshoes.store.presentation.controllers
 
 import com.snapshoes.store.service.AddressService
-import com.snapshoes.store.presentation.dtos.request.SaveAddressDto
+import com.snapshoes.store.presentation.dtos.request.store.SaveAddressDto
 import com.snapshoes.store.presentation.dtos.response.common.AddressDto
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity

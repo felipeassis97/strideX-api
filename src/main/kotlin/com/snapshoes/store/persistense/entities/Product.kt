@@ -32,7 +32,7 @@ data class Product(
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     val productGenres: List<ProductGenre> = emptyList()
-){
+) {
     constructor() : this(
         id = null,
         title = "",

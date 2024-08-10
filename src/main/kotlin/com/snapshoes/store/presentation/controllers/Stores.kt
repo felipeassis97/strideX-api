@@ -1,7 +1,7 @@
 package com.snapshoes.store.presentation.controllers
 
 import com.snapshoes.store.service.StoreService
-import com.snapshoes.store.presentation.dtos.request.SaveAddressDto
+import com.snapshoes.store.presentation.dtos.request.store.SaveAddressDto
 import com.snapshoes.store.presentation.dtos.response.store.StoreDto
 import jakarta.validation.Valid
 import org.springframework.data.domain.Sort
@@ -33,7 +33,8 @@ class Stores(
     @Transactional
     fun updateStoreAddressById(
         @PathVariable id: Long,
-        @RequestBody @Valid form: SaveAddressDto): ResponseEntity<StoreDto> {
+        @RequestBody @Valid form: SaveAddressDto
+    ): ResponseEntity<StoreDto> {
         val store = service.updateAddress(id, form)
         return ResponseEntity.ok(store)
     }

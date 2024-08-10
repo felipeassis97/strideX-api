@@ -17,7 +17,9 @@ data class ProductGenre(
 
     val createdAt: LocalDateTime? = null,
     val updatedAt: LocalDateTime? = null
-) {
+)
+
+{
     constructor() : this(
         product = Product(), // Construtor padrão para Product
         genre = Genre(), // Construtor padrão para Genre

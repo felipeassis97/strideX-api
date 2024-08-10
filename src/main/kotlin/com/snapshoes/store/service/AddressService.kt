@@ -1,20 +1,18 @@
 package com.snapshoes.store.service
 
 import org.springframework.stereotype.Service
-import com.snapshoes.store.presentation.dtos.request.SaveAddressDto
+import com.snapshoes.store.presentation.dtos.request.store.SaveAddressDto
 import com.snapshoes.store.persistense.repositories.AddressRepository
 import com.snapshoes.store.presentation.dtos.response.common.AddressDto
-import com.snapshoes.store.presentation.dtos.mappers.common.address.AddressMapperToDto
-import com.snapshoes.store.presentation.dtos.mappers.common.address.AddressMapperToEntity
+import com.snapshoes.store.presentation.dtos.mappers.AddressMapper
 
 @Service
 class AddressService(
     private val addressRepository: AddressRepository,
-    private val addressMapperToDto: AddressMapperToDto,
-    private val saveAddressDtoToEntity: AddressMapperToEntity,
+    private val addressMapper: AddressMapper,
 ) {
     fun saveAddress(address: SaveAddressDto): AddressDto {
-        val addressSaved = addressRepository.save(saveAddressDtoToEntity.map(address))
-        return addressMapperToDto.map(addressSaved)
+        val addressSaved = addressRepository.save(addressMapper.saveAddressDtoToEntity(address))
+        return addressMapper.toDto(addressSaved)
     }
 }
