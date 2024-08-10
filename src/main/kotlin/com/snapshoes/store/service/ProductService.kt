@@ -1,13 +1,13 @@
 package com.snapshoes.store.service
-import com.snapshoes.store.presentation.dtos.response.product.ProductDto
-import com.snapshoes.store.presentation.dtos.mappers.product.ProductMapper
-import com.snapshoes.store.persistense.repositories.ProductRepository
-import com.snapshoes.store.persistense.specifications.ProductSpecifications
 
+import org.springframework.data.domain.Page
+import org.springframework.stereotype.Service
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.domain.Specification
-import org.springframework.stereotype.Service
-import org.springframework.data.domain.Page
+import com.snapshoes.store.persistense.repositories.ProductRepository
+import com.snapshoes.store.presentation.dtos.response.product.ProductDto
+import com.snapshoes.store.presentation.dtos.mappers.ProductMapper
+import com.snapshoes.store.persistense.specifications.ProductSpecifications
 
 @Service
 class ProductService(
@@ -22,7 +22,6 @@ class ProductService(
                 .and(name?.let { ProductSpecifications.hasName(it) }),
             pageable
         )
-
-        return products.map { product->  productMapper.map(product) }
+        return products.map { productMapper.toDto(it) }
     }
 }

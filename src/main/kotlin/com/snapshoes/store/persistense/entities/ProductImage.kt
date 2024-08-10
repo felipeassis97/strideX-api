@@ -16,7 +16,9 @@ data class ProductImage(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
     val product: Product
-) {
+)
+
+{
     constructor() : this(
         id = null,
         url = "",

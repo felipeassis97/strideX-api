@@ -11,7 +11,9 @@ data class Brand(
     val name: String,
     val createdAt: LocalDateTime?,
     val updatedAt: LocalDateTime?
-) {
+)
+
+{
     // Default constructor
     constructor() : this(
         id = null,

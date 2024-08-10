@@ -1,4 +1,4 @@
-package com.snapshoes.store.presentation.dtos.request
+package com.snapshoes.store.presentation.dtos.request.store
 
 import jakarta.validation.constraints.NotEmpty
 import jakarta.validation.constraints.NotNull

@@ -14,9 +14,9 @@ data class Genre(
 ) {
     // Default constructor
     constructor() : this(
-        null,
-        "",
-        null,
-        null
+        id = null,
+        name = "",
+        createdAt = null,
+        updatedAt = null
     )
 }

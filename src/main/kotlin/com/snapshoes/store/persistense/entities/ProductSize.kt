@@ -17,7 +17,9 @@ data class ProductSize(
 
     val createdAt: LocalDateTime? = null,
     val updatedAt: LocalDateTime? = null
-) {
+)
+
+{
     constructor() : this(
         product = Product(),
         size = Size(),
