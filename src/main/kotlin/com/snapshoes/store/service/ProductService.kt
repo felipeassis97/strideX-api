@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page
 import org.springframework.stereotype.Service
 import org.springframework.data.domain.Pageable
 import com.snapshoes.store.persistense.repositories.*
+import org.springframework.cache.annotation.Cacheable
+import org.springframework.cache.annotation.CacheEvict
 import org.springframework.data.jpa.domain.Specification
 import com.snapshoes.store.persistense.entities.ProductSize
 import com.snapshoes.store.persistense.entities.ProductGenre
@@ -29,6 +31,7 @@ class ProductService(
     private val genreMapper: GenreMapper,
     private val sizeMapper: SizeMapper
 ) {
+    @Cacheable(cacheNames = ["Products"], key = "#root.method.name")
     fun getAll(storeId: Long?, brandId: Long?, name: String?, pageable: Pageable): Page<ProductDto> {
         val products = productRepository.findAll(
             Specification.where(
@@ -41,6 +44,7 @@ class ProductService(
     }
 
     @Transactional
+    @CacheEvict(cacheNames = ["Products"], allEntries = true)
     fun createProduct(form: CreateProductDto): Long {
         // Valid Store
         val store = storeRepository.findById(form.storeId).orElseThrow {
