@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component
 import com.snapshoes.store.persistense.entities.Product
 import com.snapshoes.store.persistense.entities.ProductImage
 import com.snapshoes.store.config.interfaces.Mapper
+import com.snapshoes.store.presentation.dtos.request.product.CreateProductImageDto
 import com.snapshoes.store.presentation.dtos.response.product.ProductImageDto
 
 @Component

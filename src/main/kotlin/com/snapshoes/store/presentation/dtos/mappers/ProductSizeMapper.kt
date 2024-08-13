@@ -1,8 +1,8 @@
 package com.snapshoes.store.presentation.dtos.mappers
 
 import com.snapshoes.store.persistense.entities.Product
-import com.snapshoes.store.persistense.entities.ProductSize
 import com.snapshoes.store.config.interfaces.Mapper
+import com.snapshoes.store.persistense.entities.ProductSize
 import com.snapshoes.store.presentation.dtos.response.common.SizeDto
 import com.snapshoes.store.presentation.dtos.response.product.ProductSizeDto
 import jakarta.persistence.EntityManager

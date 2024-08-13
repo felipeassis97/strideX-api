@@ -1,5 +1,8 @@
 package com.snapshoes.store.persistense.specifications
 import com.snapshoes.store.persistense.entities.Product
+import com.snapshoes.store.persistense.entities.ProductGenre
+import com.snapshoes.store.persistense.entities.ProductSize
+import jakarta.persistence.criteria.JoinType
 import org.springframework.data.jpa.domain.Specification
 
 class ProductSpecifications {

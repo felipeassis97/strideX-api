@@ -1,9 +1,11 @@
 package com.snapshoes.store.persistense.entities
 
 import jakarta.persistence.*
+import java.io.Serializable
 import java.time.LocalDateTime
 
 @Entity
+@IdClass(ProductSizeId::class)
 data class ProductSize(
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
@@ -27,3 +29,9 @@ data class ProductSize(
         updatedAt = null
     )
 }
+
+@Embeddable
+class ProductSizeId(
+    val product: Long = 0L,
+    val size: Long = 0L
+) : Serializable
