@@ -29,8 +29,8 @@ class Stores(
     @GetMapping("/{id}")
     fun fetchStoreById(@PathVariable id: Long) = service.getStoreById(id)
 
-    @PutMapping("/update-address/{id}")
     @Transactional
+    @PutMapping("/update-address/{id}")
     fun updateStoreAddressById(
         @PathVariable id: Long,
         @RequestBody @Valid form: SaveAddressDto
