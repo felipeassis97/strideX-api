@@ -1,16 +1,16 @@
 package com.snapshoes.store.presentation.controllers
 
-import com.snapshoes.store.service.AddressService
-import com.snapshoes.store.presentation.dtos.request.store.SaveAddressDto
-import com.snapshoes.store.presentation.dtos.response.common.AddressDto
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
+import com.snapshoes.store.service.AddressService
 import org.springframework.web.util.UriComponentsBuilder
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.transaction.annotation.Transactional
+import com.snapshoes.store.presentation.dtos.response.common.AddressDto
+import com.snapshoes.store.presentation.dtos.request.store.SaveAddressDto
 
 @RestController
 @RequestMapping("/address")

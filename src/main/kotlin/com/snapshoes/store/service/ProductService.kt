@@ -1,23 +1,21 @@
 package com.snapshoes.store.service
 
-import com.snapshoes.store.config.exceptions.NotFoundException
-import com.snapshoes.store.persistense.entities.Product
-import com.snapshoes.store.persistense.entities.ProductGenre
-import com.snapshoes.store.persistense.entities.ProductImage
-import com.snapshoes.store.persistense.entities.ProductSize
-import com.snapshoes.store.persistense.repositories.*
 import org.springframework.data.domain.Page
 import org.springframework.stereotype.Service
 import org.springframework.data.domain.Pageable
+import com.snapshoes.store.persistense.repositories.*
 import org.springframework.data.jpa.domain.Specification
-import com.snapshoes.store.presentation.dtos.response.product.ProductDto
-import com.snapshoes.store.presentation.dtos.mappers.ProductMapper
-import com.snapshoes.store.persistense.specifications.ProductSpecifications
-import com.snapshoes.store.presentation.dtos.mappers.GenreMapper
-import com.snapshoes.store.presentation.dtos.mappers.SizeMapper
-import com.snapshoes.store.presentation.dtos.request.product.CreateProductDto
+import com.snapshoes.store.persistense.entities.ProductSize
+import com.snapshoes.store.persistense.entities.ProductGenre
+import com.snapshoes.store.persistense.entities.ProductImage
+import com.snapshoes.store.config.exceptions.NotFoundException
 import org.springframework.transaction.annotation.Transactional
-
+import com.snapshoes.store.presentation.dtos.mappers.SizeMapper
+import com.snapshoes.store.presentation.dtos.mappers.GenreMapper
+import com.snapshoes.store.presentation.dtos.mappers.ProductMapper
+import com.snapshoes.store.presentation.dtos.response.product.ProductDto
+import com.snapshoes.store.persistense.specifications.ProductSpecifications
+import com.snapshoes.store.presentation.dtos.request.product.CreateProductDto
 
 @Service
 class ProductService(
