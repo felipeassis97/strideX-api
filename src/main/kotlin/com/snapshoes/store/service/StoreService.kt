@@ -3,6 +3,8 @@ package com.snapshoes.store.service
 import org.springframework.data.domain.Page
 import org.springframework.stereotype.Service
 import org.springframework.data.domain.Pageable
+import org.springframework.cache.annotation.Cacheable
+import org.springframework.cache.annotation.CacheEvict
 import com.snapshoes.store.config.exceptions.NotFoundException
 import com.snapshoes.store.presentation.dtos.mappers.StoreMapper
 import com.snapshoes.store.presentation.dtos.mappers.AddressMapper
@@ -18,18 +20,21 @@ class StoreService(
     private val storeRepository: StoreRepository,
     private val addressRepository: AddressRepository
 ) {
+    @Cacheable(cacheNames = ["Stores"], key = "#root.method.name")
     fun getAllStores(name: String?, pageable: Pageable): Page<StoreDto> {
         val stores = name?.let { storeRepository.findByName(name, pageable) }
             ?: storeRepository.findAll(pageable)
         return stores.map { e -> storeMapper.toDto(e) }
     }
 
+    @Cacheable(cacheNames = ["Stores"], key = "#root.method.name")
     fun getStoreById(id: Long): StoreDto {
         val store = storeRepository.findById(id)
             .orElseThrow { NotFoundException("Store NOT FOUND") }
         return storeMapper.toDto(store)
     }
 
+    @CacheEvict(cacheNames = ["Stores"], allEntries = true)
     fun updateAddress(storeId: Long, form: SaveAddressDto): StoreDto {
         val store = storeRepository.findById(storeId)
             .orElseThrow { NotFoundException("Store NOT FOUND") }
