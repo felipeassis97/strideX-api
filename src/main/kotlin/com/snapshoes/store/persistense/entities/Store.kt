@@ -13,7 +13,7 @@ data class Store(
     val logo: String?,
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
-    val address: Address? = null,
+    var address: Address? = null,
 
     @OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     val products: List<Product> = emptyList(),

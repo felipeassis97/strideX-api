@@ -38,7 +38,7 @@ class AddressMapper : Mapper<Address, AddressDto> {
         )
     }
 
-    fun saveAddressDtoToEntity(t: SaveAddressDto): Address {
+    fun updateFormToEntity(t: SaveAddressDto): Address {
         return Address(
             street = t.street,
             neighborhood = t.neighborhood,

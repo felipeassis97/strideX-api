@@ -13,7 +13,7 @@ class AddressService(
     private val addressMapper: AddressMapper,
 ) {
     fun saveAddress(address: SaveAddressDto): AddressDto {
-        val addressSaved = addressRepository.save(addressMapper.saveAddressDtoToEntity(address))
+        val addressSaved = addressRepository.save(addressMapper.updateFormToEntity(address))
         return addressMapper.toDto(addressSaved)
     }
 }
