@@ -1,5 +1,6 @@
 package com.snapshoes.store.presentation.controllers
 
+import com.snapshoes.store.presentation.dtos.request.store.CreateStoreDto
 import jakarta.validation.Valid
 import org.springframework.data.domain.Sort
 import org.springframework.data.domain.Page
@@ -35,6 +36,17 @@ class Stores(
     }
 
     @Transactional
+    @PostMapping
+    fun createStore(
+        @RequestBody @Valid form: CreateStoreDto,
+        uriBuilder: UriComponentsBuilder
+    ): ResponseEntity<StoreDto> {
+        val store = service.createStore(form)
+        val uri = uriBuilder.path("/stores/${store.id}").build().toUri()
+        return ResponseEntity.created(uri).body(store)
+    }
+
+    @Transactional
     @PutMapping("/update-address/{id}")
     fun updateStoreAddressById(
         @PathVariable id: Long,
@@ -45,7 +57,5 @@ class Stores(
 
         val uri = uriBuilder.path("/stores/${store.id}").build().toUri()
         return ResponseEntity.created(uri).body(store)
-
-
     }
 }
