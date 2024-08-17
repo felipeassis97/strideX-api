@@ -1,49 +1,57 @@
-# SnapShoes API 👟
+# StrideX API 👟
 This project is a Spring Boot application developed in Kotlin for managing products, brands, sizes, and genres in an e-commerce platform. It uses MySQL for data persistence, leveraging Spring’s robust framework and Kotlin's modern syntax for a maintainable and scalable backend solution. The application features include handling HTTP requests, implementing business logic, and configuring security. It aims to provide an efficient and reliable system for managing an online store’s inventory.
 
 ## 📚 Layered Architecture
-1. **Presentation Layer**
-    - **Responsibility**: Manage user interface and HTTP requests.
-    - **Components**:
-        - **Controllers**: Handle HTTP requests and responses. In Spring, use `@RestController` or `@Controller` annotations.
-        - **DTOs (Data Transfer Objects)**: Represent data being sent and received through the API.
+### 🔹 Presentation Layer
+**Responsibility:** Manage user interface and HTTP requests.
 
-2. **Service Layer**
-    - **Responsibility**: Contains business logic of the application. This layer bridges the presentation layer and the persistence layer.
-    - **Components**:
-        - **Services**: Classes annotated with `@Service` that contain business logic.
-        - **Service Interfaces**: Define contracts for business logic.
+**Components:**
+- **Controllers:** Handle HTTP requests and responses. Use `@RestController` or `@Controller` annotations in Spring.
+- **DTOs (Data Transfer Objects):** Represent data being sent and received through the API.
+    - **Mappers:** Convert between entities, DTOs, and request/response objects.
+    - **Request Objects:** Objects used to capture and validate user input, categorized by domain (e.g., `StoreRequest`, `ProductRequest`, `CommonRequest`).
+    - **Response Objects:** Objects used to structure the data returned by the API, categorized by domain (e.g., `StoreResponse`, `ProductResponse`, `CommonResponse`).
 
-3. **Persistence Layer**
-    - **Responsibility**: Manage data access and communication with the database.
-    - **Components**:
-        - **Repositories**: Interfaces annotated with `@Repository` that extend `JpaRepository` or `CrudRepository` for CRUD operations.
-        - **Entities**: Classes representing database tables, annotated with `@Entity`.
+### 🔹 Service Layer
+**Responsibility:** Contains business logic of the application. This layer bridges the presentation layer and the persistence layer.
 
-4. **Configuration Layer**
-    - **Responsibility**: Configure and manage Spring beans and settings.
-    - **Components**:
-        - **Configuration Classes**: Annotated with `@Configuration` to define beans and additional configurations.
-        - **Security Configuration Classes**: Used to configure security aspects such as authentication and authorization.
+**Components:**
+- **Services:** Classes annotated with `@Service` that contain business logic.
+- **Service Interfaces:** Define contracts for business logic implementations.
+
+### Persistence Layer
+
+**Responsibility:** Manage data access and communication with the database.
+
+**Components:**
+- **Entities:** Classes representing database tables, annotated with `@Entity`.
+- **Repositories:** Interfaces annotated with `@Repository` that extend `JpaRepository`, `CrudRepository`, or similar, for CRUD operations.
+- **Specifications:** Classes used to define dynamic queries based on the JPA Criteria API.
+
+### 🔹 Configuration Layer
+
+**Responsibility:** Configure and manage Spring beans and settings.
+
+**Components:**
+- **Configuration Classes:** Annotated with `@Configuration` to define beans and additional configurations.
+- **Security Configuration Classes:** Used to configure security aspects such as authentication and authorization.
+- **Global Configurations:** Shared configurations applicable across multiple components.
 
 #### ℹ️ Example Package Structure
 ```plaintext
 com.snapshoes.store
-├── controller
-│   └── ProductController.kt
-├── service
-│   ├── ProductService.kt
-│   └── impl
-│       └── ProductServiceImpl.kt
-├── repository
-│   └── ProductRepository.kt
-├── model
-│   ├── Product.kt
-│   ├── Size.kt
-│   ├── Genre.kt
-│   └── Brand.kt
 ├── config
-│   └── SecurityConfig.kt
+├── persistence
+│   ├── entities
+│   ├── repositories
+│   └── specifications
+├── service
+├── presentation
+│   ├── controllers
+│   ├── dtos
+│   │   ├── mappers
+│   │   ├── request
+│   │   └── response
 └── MyProjectApplication.kt
 ```
 
