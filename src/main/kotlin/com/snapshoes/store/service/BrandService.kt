@@ -44,4 +44,11 @@ class BrandService(
         val brand = brandRepository.save(updatedBrand)
         return brandMapper.toDto(brand)
     }
+
+    @CacheEvict(cacheNames = ["Brands"], allEntries = true)
+    fun createBrand(form: CreateBrandDto): BrandDto {
+        val toSaveBrand = brandMapper.createBrandToEntity(null, form)
+        val brand = brandRepository.save(toSaveBrand)
+        return brandMapper.toDto(brand)
+    }
 }

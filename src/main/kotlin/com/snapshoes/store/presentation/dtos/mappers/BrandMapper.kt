@@ -24,7 +24,7 @@ class BrandMapper : Mapper<Brand, BrandDto> {
         )
     }
 
-     fun createBrandToEntity(id: Long, form: CreateBrandDto): Brand {
+    fun createBrandToEntity(id: Long?, form: CreateBrandDto): Brand {
         return Brand(
             id = id,
             name = form.name,
