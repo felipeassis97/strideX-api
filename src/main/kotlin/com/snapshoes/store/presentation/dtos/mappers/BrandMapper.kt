@@ -1,10 +1,10 @@
 package com.snapshoes.store.presentation.dtos.mappers
 
-import com.snapshoes.store.config.interfaces.Mapper
 import org.springframework.stereotype.Component
+import com.snapshoes.store.config.interfaces.Mapper
 import com.snapshoes.store.persistense.entities.Brand
-import com.snapshoes.store.presentation.dtos.request.common.CreateBrandDto
 import com.snapshoes.store.presentation.dtos.response.common.BrandDto
+import com.snapshoes.store.presentation.dtos.request.common.CreateBrandDto
 
 @Component
 class BrandMapper : Mapper<Brand, BrandDto> {
@@ -19,6 +19,15 @@ class BrandMapper : Mapper<Brand, BrandDto> {
         return Brand(
             id = dto.id,
             name = dto.name,
+            createdAt = null,
+            updatedAt = null
+        )
+    }
+
+    fun createBrandToEntity(id: Long?, form: CreateBrandDto): Brand {
+        return Brand(
+            id = id,
+            name = form.name,
             createdAt = null,
             updatedAt = null
         )
