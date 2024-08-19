@@ -84,7 +84,7 @@ class ProductService(
         val genres = form.genres.map {
             ProductGenre(
                 product = savedProduct,
-                genre = genreMapper.createGenreToEntity(it)
+                genre = genreMapper.createGenreToEntity(it.id, it)
             )
         }
         productGenreRepository.saveAll(genres)
