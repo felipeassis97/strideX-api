@@ -27,6 +27,16 @@ class Genres(
     }
 
     @Transactional
+    @PutMapping("/{id}")
+    fun updateGenreById(
+        @PathVariable id: Long, @RequestBody @Valid form: CreateGenreDto, uriBuilder: UriComponentsBuilder
+    ): ResponseEntity<GenreDto> {
+        val genre = service.updateGenreById(id, form)
+        val uri = uriBuilder.path("/genres/${genre.id}").build().toUri()
+        return ResponseEntity.created(uri).body(genre)
+    }
+
+    @Transactional
     @PostMapping
     fun createGenre(
         @RequestBody @Valid form: CreateGenreDto, uriBuilder: UriComponentsBuilder
