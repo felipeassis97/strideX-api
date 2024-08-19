@@ -29,8 +29,15 @@ class GenreService(
 
     @CacheEvict(cacheNames = ["Genres"], allEntries = true)
     fun createGenre(form: CreateGenreDto): GenreDto {
-        val toSaveBrand = genreMapper.createGenreToEntity(null, form)
-        val genre = genreRepository.save(toSaveBrand)
+        val toSaveGenre= genreMapper.createGenreToEntity(null, form)
+        val genre = genreRepository.save(toSaveGenre)
+        return genreMapper.toDto(genre)
+    }
+
+    @CacheEvict(cacheNames = ["Genres"], allEntries = true)
+    fun updateGenreById(id: Long, form: CreateGenreDto): GenreDto {
+        val toSaveGenre= genreMapper.createGenreToEntity(id, form)
+        val genre = genreRepository.save(toSaveGenre)
         return genreMapper.toDto(genre)
     }
 }
