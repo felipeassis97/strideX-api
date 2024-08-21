@@ -40,4 +40,9 @@ class GenreService(
         val genre = genreRepository.save(toSaveGenre)
         return genreMapper.toDto(genre)
     }
+
+    @CacheEvict(cacheNames = ["Genres"], allEntries = true)
+    fun deleteGenreById(id: Long) {
+        genreRepository.deleteById(id)
+    }
 }

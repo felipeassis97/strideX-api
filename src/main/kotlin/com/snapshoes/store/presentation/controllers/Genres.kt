@@ -45,4 +45,10 @@ class Genres(
         val uri = uriBuilder.path("/genres/${genre.id}").build().toUri()
         return ResponseEntity.created(uri).body(genre)
     }
+
+    @DeleteMapping("/{id}")
+    fun deleteGenreById(@PathVariable id: Long): ResponseEntity<Void> {
+        service.deleteGenreById(id)
+        return ResponseEntity.noContent().build()
+    }
 }
