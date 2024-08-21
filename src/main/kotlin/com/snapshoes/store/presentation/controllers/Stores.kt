@@ -58,4 +58,13 @@ class Stores(
         val uri = uriBuilder.path("/stores/${store.id}").build().toUri()
         return ResponseEntity.created(uri).body(store)
     }
+
+    @Transactional
+    @DeleteMapping("/{id}")
+    fun deleteStoreById(
+        @PathVariable id: Long
+    ): ResponseEntity<Void> {
+        service.deleteStoreById(id)
+        return ResponseEntity.noContent().build()
+    }
 }
