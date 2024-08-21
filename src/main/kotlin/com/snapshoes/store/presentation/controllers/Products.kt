@@ -37,4 +37,10 @@ class Products(
         val uri = uriBuilder.path("/products/${productCreated.id}").build().toUri()
         return ResponseEntity.created(uri).body(productCreated)
     }
+
+    @DeleteMapping("/{id}")
+    fun deleteProductById(@PathVariable id: Long): ResponseEntity<Void> {
+        service.deleteProductById(id)
+        return ResponseEntity.noContent().build()
+    }
 }
