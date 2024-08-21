@@ -21,15 +21,15 @@ import com.snapshoes.store.presentation.dtos.request.product.CreateProductDto
 
 @Service
 class ProductService(
+    private val sizeMapper: SizeMapper,
+    private val genreMapper: GenreMapper,
     private val productMapper: ProductMapper,
-    private val productRepository: ProductRepository,
     private val storeRepository: StoreRepository,
     private val brandRepository: BrandRepository,
+    private val productRepository: ProductRepository,
     private val productSizeRepository: ProductSizeRepository,
     private val productGenreRepository: ProductGenreRepository,
     private val productImageRepository: ProductImageRepository,
-    private val genreMapper: GenreMapper,
-    private val sizeMapper: SizeMapper
 ) {
     @Cacheable(cacheNames = ["Products"], key = "#root.method.name")
     fun getAll(storeId: Long?, brandId: Long?, name: String?, pageable: Pageable): Page<ProductDto> {
@@ -101,5 +101,17 @@ class ProductService(
         val sizes = productSizeRepository.findSizesByProductId(id)
 
         return productMapper.createProductToEntity(product, images, genres, sizes)
+    }
+
+    @CacheEvict(cacheNames = ["Products"], allEntries = true)
+    fun deleteProductById(id: Long) {
+        // Valid product
+        val product = productRepository.findById(id).orElseThrow {
+            NotFoundException("Product not found with ID: $id")
+        }
+
+        productImageRepository.deleteByProductId(id)
+        productGenreRepository.deleteByProductId(id)
+        productRepository.delete(product)
     }
 }
