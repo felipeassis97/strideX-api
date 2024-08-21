@@ -24,8 +24,10 @@ class ProductService(
     private val sizeMapper: SizeMapper,
     private val genreMapper: GenreMapper,
     private val productMapper: ProductMapper,
+    private val sizeRepository: SizeRepository,
     private val storeRepository: StoreRepository,
     private val brandRepository: BrandRepository,
+    private val genreRepository: GenreRepository,
     private val productRepository: ProductRepository,
     private val productSizeRepository: ProductSizeRepository,
     private val productGenreRepository: ProductGenreRepository,
@@ -46,11 +48,12 @@ class ProductService(
     @Transactional
     @CacheEvict(cacheNames = ["Products"], allEntries = true)
     fun createProduct(form: CreateProductDto): Long {
-        // Valid Store
+        // Valid store
         val store = storeRepository.findById(form.storeId).orElseThrow {
             NotFoundException("Store not found with ID: ${form.storeId}")
         }
 
+        //Valid brand
         val brand = form.brand.id?.let {
             brandRepository.findById(it).orElseThrow {
                 NotFoundException("Brand not found with ID: $it")
@@ -58,21 +61,16 @@ class ProductService(
         } ?: throw NotFoundException("Brand ID must be provided")
 
         val currentProduct = productMapper.createSimpleProductToEntity(form, brand, store)
-
-        // Save product
         val savedProduct = productRepository.save(currentProduct)
 
-        // Save product images
-        val images = form.images.map {
-            ProductImage(
-               product = savedProduct,
-                url = it.url
-            )
-        }
-        productImageRepository.saveAll(images)
-
-        // Save product sizes
+        //Valid and save product sizes
         val sizes = form.sizes.map {
+            it.id?.let { it1 ->
+                sizeRepository.findById(it1)
+                    .orElseThrow {
+                        NotFoundException("Size not found with: $it")
+                    }
+            }
             ProductSize(
                 product = savedProduct,
                 size = sizeMapper.createSizeDtoToEntity(it),
@@ -80,8 +78,15 @@ class ProductService(
         }
         productSizeRepository.saveAll(sizes)
 
-        // save product genres
+
+        // Valid and save product genres
         val genres = form.genres.map {
+            it.id?.let { it1 ->
+                genreRepository.findById(it1)
+                    .orElseThrow {
+                        NotFoundException("Genre not found with: $it")
+                    }
+            }
             ProductGenre(
                 product = savedProduct,
                 genre = genreMapper.createGenreToEntity(it.id, it)
@@ -89,9 +94,18 @@ class ProductService(
         }
         productGenreRepository.saveAll(genres)
 
+        // Save product images
+        val images = form.images.map {
+            ProductImage(
+                product = savedProduct,
+                url = it.url
+            )
+        }
+        productImageRepository.saveAll(images)
+
         savedProduct.id?.let {
             return it
-        } ?: throw NotFoundException("Brand ID must be provided")
+        } ?: throw NotFoundException("Store ID no found")
     }
 
     fun findProductWithImagesAndGenres(id: Long): ProductDto {
