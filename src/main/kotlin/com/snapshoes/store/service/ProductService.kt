@@ -17,12 +17,15 @@ import com.snapshoes.store.presentation.dtos.mappers.GenreMapper
 import com.snapshoes.store.presentation.dtos.mappers.ProductMapper
 import com.snapshoes.store.presentation.dtos.response.product.ProductDto
 import com.snapshoes.store.persistense.specifications.ProductSpecifications
+import com.snapshoes.store.presentation.dtos.mappers.BrandMapper
 import com.snapshoes.store.presentation.dtos.request.product.CreateProductDto
+import com.snapshoes.store.presentation.dtos.request.product.UpdateProductDto
 
 @Service
 class ProductService(
     private val sizeMapper: SizeMapper,
     private val genreMapper: GenreMapper,
+    private val brandMapper: BrandMapper,
     private val productMapper: ProductMapper,
     private val sizeRepository: SizeRepository,
     private val storeRepository: StoreRepository,
@@ -127,5 +130,66 @@ class ProductService(
         productImageRepository.deleteByProductId(id)
         productGenreRepository.deleteByProductId(id)
         productRepository.delete(product)
+    }
+
+    @Transactional
+    @CacheEvict(cacheNames = ["Products"], allEntries = true)
+    fun patchProduct(id: Long, form: UpdateProductDto) {
+        val product = productRepository.findById(id).orElseThrow {
+            NotFoundException("Product not found with ID: $id")
+        }
+
+        form.title?.let { product.title = it }
+        form.price?.let { product.price = it }
+        form.description?.let { product.description = it }
+        form.quantity?.let { product.quantity = it }
+
+        form.brand?.let {
+            val validateBrand = it.id?.let { it1 -> brandRepository.existsById(it1) }
+            if (validateBrand == true) {
+                val brand = brandMapper.createBrandToEntity(product.brand.id, it)
+                product.brand = brandRepository.save(brand)
+            }
+        }
+
+        form.sizes?.let {
+            product.id?.let { it1 -> productSizeRepository.deleteByProductId(it1) }
+
+            val productSizes = it.map { sizeDto ->
+                ProductSize(
+                    product = product,
+                    size = sizeMapper.createSizeDtoToEntity(sizeDto)
+                )
+            }
+            productSizeRepository.saveAll(productSizes)
+        }
+
+        form.images?.let {
+            it.map { imageDto ->
+                if (imageDto.id != null) {
+                    productImageRepository.updateImageUrl(imageDto.id, imageDto.url)
+                } else {
+                    val image = ProductImage(
+                        product = product,
+                        url = imageDto.url
+                    )
+                    productImageRepository.save(image)
+                }
+            }
+        }
+
+        form.genres?.let {
+            product.id?.let { it1 -> productGenreRepository.deleteByProductId(it1) }
+            val productGenres = it.map { genreDto ->
+                ProductGenre(
+                    product = product,
+                    genre = genreMapper.createGenreToEntity(genreDto.id, genreDto)
+                )
+            }
+            productGenreRepository.saveAll(productGenres)
+        }
+
+        //Save product updated
+        productRepository.save(product)
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.data.web.PageableDefault
 import org.springframework.web.util.UriComponentsBuilder
 import com.snapshoes.store.presentation.dtos.response.product.ProductDto
 import com.snapshoes.store.presentation.dtos.request.product.CreateProductDto
+import com.snapshoes.store.presentation.dtos.request.product.UpdateProductDto
 
 @RestController
 @RequestMapping("/products")
@@ -42,5 +43,17 @@ class Products(
     fun deleteProductById(@PathVariable id: Long): ResponseEntity<Void> {
         service.deleteProductById(id)
         return ResponseEntity.noContent().build()
+    }
+
+    @PatchMapping("/{id}")
+    fun patchProductById(
+        @PathVariable id: Long,
+        @RequestBody @Valid form: UpdateProductDto,
+        uriBuilder: UriComponentsBuilder
+    ): ResponseEntity<ProductDto> {
+        service.patchProduct(id, form)
+        val productUpdated = service.findProductWithImagesAndGenres(id)
+        val uri = uriBuilder.path("/products/${productUpdated.id}").build().toUri()
+        return ResponseEntity.created(uri).body(productUpdated)
     }
 }

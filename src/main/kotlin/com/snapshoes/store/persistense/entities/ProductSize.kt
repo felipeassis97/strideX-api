@@ -15,7 +15,7 @@ data class ProductSize(
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "size_id")
-    val size: Size,
+    var size: Size,
 
     val createdAt: LocalDateTime? = null,
     val updatedAt: LocalDateTime? = null
