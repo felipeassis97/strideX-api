@@ -1,5 +1,21 @@
 # StrideX API 👟
+
+<p align="center">
+  <img src="docs/icons/kotlin_logo.svg" width="40">
+  <img src="docs/icons/spring_logo.svg" width="44">
+  <img src="docs/icons/maven_logo.svg" width="44">
+</p>
+
 This project is a Spring Boot application developed in Kotlin for managing products, brands, sizes, and genres in an e-commerce platform. It uses MySQL for data persistence, leveraging Spring’s robust framework and Kotlin's modern syntax for a maintainable and scalable backend solution. The application features include handling HTTP requests, implementing business logic, and configuring security. It aims to provide an efficient and reliable system for managing an online store’s inventory.
+
+ ## 📖 Swagger
+```
+/swagger-ui/index.html
+```
+#### Docs Json format:
+```
+/v3/api-docs
+```
 
 ## 📚 Layered Architecture
 ### 🔹 Presentation Layer
@@ -98,6 +114,9 @@ com.snapshoes.store
 
  - These relationships ensure that each product is linked to a specific store and brand, can have multiple sizes and genres, and has associated images. This schema supports efficient querying and management of the e-commerce inventory.
 
+<p align="center">
+  <img src="docs/table_diagram.png" width="300">
+</p>
 
 ## ℹ️ Commit Convention
 - We follow the Conventional Commits specification to maintain clear and consistent commit messages. Below is a description of the commit types used in this project:
