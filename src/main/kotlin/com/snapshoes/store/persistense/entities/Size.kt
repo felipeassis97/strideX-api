@@ -7,14 +7,20 @@ import java.time.LocalDateTime
 data class Size(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
-    val size: String,
+    val usSize: Double,
+    val euSize: Double,
+    val brSize: Double,
+    val cmSize: Double,
     val createdAt: LocalDateTime?,
     val updatedAt: LocalDateTime?,
 ) {
     // Default constructor
     constructor() : this(
         id = null,
-        size = "",
+        usSize = 0.0,
+        euSize = 0.0,
+        brSize = 0.0,
+        cmSize = 0.0,
         createdAt = null,
         updatedAt = null
     )
