@@ -8,5 +8,14 @@ data class CreateSizeDto(
     val id: Long?,
 
     @field:NotEmpty
-    val size: String,
+    val usSize: Double,
+
+    @field:NotEmpty
+    val euSize: Double,
+
+    @field:NotEmpty
+    val brSize: Double,
+
+    @field:NotEmpty
+    val cmSize: Double,
 )

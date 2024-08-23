@@ -11,14 +11,20 @@ class SizeMapper : Mapper<Size, SizeDto> {
     override fun toDto(entity: Size): SizeDto {
         return SizeDto(
             id = entity.id,
-            size = entity.size,
+            usSize = entity.usSize,
+            euSize = entity.euSize,
+            brSize = entity.brSize,
+            cmSize = entity.cmSize
         )
     }
 
     override fun toEntity(dto: SizeDto): Size {
         return Size(
             id = dto.id,
-            size = dto.size,
+            usSize = dto.usSize,
+            euSize = dto.euSize,
+            brSize = dto.brSize,
+            cmSize = dto.cmSize,
             createdAt = null,
             updatedAt = null
         )
@@ -27,7 +33,10 @@ class SizeMapper : Mapper<Size, SizeDto> {
     fun createSizeDtoToEntity(dto: CreateSizeDto): Size {
         return Size(
             id = dto.id,
-            size = dto.size,
+            usSize = dto.usSize,
+            euSize = dto.euSize,
+            brSize = dto.brSize,
+            cmSize = dto.cmSize,
             createdAt = null,
             updatedAt = null
         )
