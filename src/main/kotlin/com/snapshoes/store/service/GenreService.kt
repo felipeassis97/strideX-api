@@ -6,8 +6,8 @@ import org.springframework.cache.annotation.CacheEvict
 import com.snapshoes.store.config.exceptions.NotFoundException
 import com.snapshoes.store.presentation.dtos.mappers.GenreMapper
 import com.snapshoes.store.persistense.repositories.GenreRepository
-import com.snapshoes.store.persistense.repositories.ProductGenreRepository
 import com.snapshoes.store.presentation.dtos.response.common.GenreDto
+import com.snapshoes.store.persistense.repositories.ProductGenreRepository
 import com.snapshoes.store.presentation.dtos.request.common.CreateGenreDto
 
 @Service
@@ -25,7 +25,9 @@ class GenreService(
     @Cacheable(cacheNames = ["Genres"], key = "#root.method.name")
     fun getGenreById(id: Long): GenreDto {
         val genre = genreRepository.findById(id)
-            .orElseThrow { NotFoundException("Genre NOT FOUND") }
+            .orElseThrow {
+                NotFoundException("Genre not found with ID: $id")
+            }
         return genreMapper.toDto(genre)
     }
 
@@ -46,7 +48,7 @@ class GenreService(
     @CacheEvict(cacheNames = ["Genres"], allEntries = true)
     fun deleteGenreById(id: Long) {
         val genre = genreRepository.findById(id).orElseThrow {
-            NotFoundException("Genre NOT FOUND")
+            NotFoundException("Genre not found with ID: $id")
         }
         genreRepository.delete(genre)
         productGenreRepository.deleteByGenreId(id)
