@@ -7,8 +7,9 @@ import com.snapshoes.store.config.exceptions.NotFoundException
 import com.snapshoes.store.presentation.dtos.mappers.BrandMapper
 import com.snapshoes.store.persistense.repositories.BrandRepository
 import com.snapshoes.store.persistense.repositories.ProductRepository
-import com.snapshoes.store.presentation.dtos.request.common.CreateBrandDto
 import com.snapshoes.store.presentation.dtos.response.common.BrandDto
+import com.snapshoes.store.presentation.dtos.request.common.CreateBrandDto
+
 
 
 
@@ -27,7 +28,9 @@ class BrandService(
     @Cacheable(cacheNames = ["Brands"], key = "#root.method.name")
     fun getBrandById(id: Long): BrandDto {
         val brand = brandRepository.findById(id)
-            .orElseThrow { NotFoundException("Brand NOT FOUND") }
+            .orElseThrow {
+                NotFoundException("Brand not found with ID: $id")
+            }
         return brandMapper.toDto(brand)
     }
 

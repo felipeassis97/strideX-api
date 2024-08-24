@@ -13,11 +13,11 @@ import com.snapshoes.store.persistense.entities.ProductImage
 import com.snapshoes.store.config.exceptions.NotFoundException
 import org.springframework.transaction.annotation.Transactional
 import com.snapshoes.store.presentation.dtos.mappers.SizeMapper
+import com.snapshoes.store.presentation.dtos.mappers.BrandMapper
 import com.snapshoes.store.presentation.dtos.mappers.GenreMapper
 import com.snapshoes.store.presentation.dtos.mappers.ProductMapper
 import com.snapshoes.store.presentation.dtos.response.product.ProductDto
 import com.snapshoes.store.persistense.specifications.ProductSpecifications
-import com.snapshoes.store.presentation.dtos.mappers.BrandMapper
 import com.snapshoes.store.presentation.dtos.request.product.CreateProductDto
 import com.snapshoes.store.presentation.dtos.request.product.UpdateProductDto
 

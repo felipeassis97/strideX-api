@@ -32,4 +32,10 @@ class Sizes(
         val uri = uriBuilder.path("/sizes/${size.id}").build().toUri()
         return ResponseEntity.created(uri).body(size)
     }
+
+    @DeleteMapping("/{id}")
+    fun deleteSizeById(@PathVariable id: Long): ResponseEntity<SizeDto> {
+        service.deleteSizeById(id)
+        return ResponseEntity.noContent().build()
+    }
 }
