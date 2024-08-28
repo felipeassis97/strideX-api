@@ -47,7 +47,7 @@ class SecurityConfiguration(
                     it.requestMatchers(matcher).permitAll()
                 }
 
-                it.requestMatchers("/api/auth/login")
+                it.requestMatchers("/api/auth/login", "/api/auth/create", "/api/auth/refresh", "/error")
                     .permitAll()
                     .anyRequest()
                     .fullyAuthenticated()
