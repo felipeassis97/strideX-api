@@ -6,8 +6,7 @@ import org.springframework.data.domain.Pageable
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.cache.annotation.CacheEvict
 import com.snapshoes.store.config.exceptions.NotFoundException
-import com.snapshoes.store.persistense.entities.Address
-import com.snapshoes.store.persistense.repositories.*
+import com.snapshoes.store.persistence.repositories.*
 import com.snapshoes.store.presentation.dtos.mappers.StoreMapper
 import com.snapshoes.store.presentation.dtos.mappers.AddressMapper
 import com.snapshoes.store.presentation.dtos.response.store.StoreDto

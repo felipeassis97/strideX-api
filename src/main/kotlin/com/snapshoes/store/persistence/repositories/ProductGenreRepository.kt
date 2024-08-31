@@ -1,8 +1,8 @@
-package com.snapshoes.store.persistense.repositories
+package com.snapshoes.store.persistence.repositories
 
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
-import com.snapshoes.store.persistense.entities.ProductGenre
+import com.snapshoes.store.persistence.entities.ProductGenre
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface ProductGenreRepository : JpaRepository<ProductGenre, Long> {

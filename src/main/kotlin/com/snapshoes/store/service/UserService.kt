@@ -1,8 +1,8 @@
 package com.snapshoes.store.service
 
-import com.snapshoes.store.persistense.entities.User
-import com.snapshoes.store.persistense.entities.UserRole
-import com.snapshoes.store.persistense.repositories.UserRepository
+import com.snapshoes.store.persistence.entities.User
+import com.snapshoes.store.persistence.entities.UserRole
+import com.snapshoes.store.persistence.repositories.UserRepository
 import com.snapshoes.store.presentation.dtos.mappers.UserMapper
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService

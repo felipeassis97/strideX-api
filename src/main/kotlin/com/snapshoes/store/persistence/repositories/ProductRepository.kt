@@ -1,5 +1,5 @@
-package com.snapshoes.store.persistense.repositories
-import com.snapshoes.store.persistense.entities.Product
+package com.snapshoes.store.persistence.repositories
+import com.snapshoes.store.persistence.entities.Product
 
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor

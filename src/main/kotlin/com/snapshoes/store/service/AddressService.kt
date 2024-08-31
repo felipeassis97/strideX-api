@@ -2,7 +2,7 @@ package com.snapshoes.store.service
 
 import org.springframework.stereotype.Service
 import com.snapshoes.store.presentation.dtos.mappers.AddressMapper
-import com.snapshoes.store.persistense.repositories.AddressRepository
+import com.snapshoes.store.persistence.repositories.AddressRepository
 import com.snapshoes.store.presentation.dtos.response.common.AddressDto
 import com.snapshoes.store.presentation.dtos.request.store.SaveAddressDto
 

@@ -1,18 +1,18 @@
 package com.snapshoes.store.config.security
 
-import com.snapshoes.store.persistense.entities.UserRole
-import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.http.HttpMethod
 import org.springframework.context.annotation.Bean
+import com.snapshoes.store.persistence.entities.UserRole
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.web.DefaultSecurityFilterChain
+import org.springframework.security.web.util.matcher.RequestMatcher
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.authentication.AuthenticationProvider
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher
-import org.springframework.security.web.util.matcher.RequestMatcher
 
 @Configuration
 @EnableWebSecurity
@@ -47,13 +47,14 @@ class SecurityConfiguration(
                     it.requestMatchers(matcher).permitAll()
                 }
 
+                s3PublicPaths.forEach { matcher ->
+                    it.requestMatchers(matcher).permitAll()
+                }
+
                 it.requestMatchers("/api/auth/login", "/api/auth/create", "/api/auth/refresh", "/error")
                     .permitAll()
                     .anyRequest()
                     .fullyAuthenticated()
-
-
-
             }
             .sessionManagement {
                 it.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -62,6 +63,13 @@ class SecurityConfiguration(
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter::class.java)
             .build()
     }
+
+    private val s3PublicPaths: List<RequestMatcher> =
+        listOf(
+            AntPathRequestMatcher("/s3/files/**", HttpMethod.DELETE.name()),
+            AntPathRequestMatcher("/s3/files**", HttpMethod.POST.name()),
+            AntPathRequestMatcher("/s3/files/**", HttpMethod.PUT.name()),
+        )
 
     private val storePublicPaths: List<RequestMatcher> =
         listOf(

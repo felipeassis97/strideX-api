@@ -1,6 +1,6 @@
-package com.snapshoes.store.persistense.repositories
+package com.snapshoes.store.persistence.repositories
 
-import com.snapshoes.store.persistense.entities.User
+import com.snapshoes.store.persistence.entities.User
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface UserRepository: JpaRepository<User, Long> {

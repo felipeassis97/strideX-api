@@ -1,22 +1,23 @@
 package com.snapshoes.store.config.security
 
-import com.snapshoes.store.persistense.repositories.UserRepository
-import com.snapshoes.store.presentation.dtos.mappers.UserMapper
 import com.snapshoes.store.service.UserService
-import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.security.authentication.AuthenticationManager
-import org.springframework.security.authentication.AuthenticationProvider
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
+import com.snapshoes.store.presentation.dtos.mappers.UserMapper
+import com.snapshoes.store.persistence.repositories.UserRepository
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.authentication.AuthenticationProvider
+import org.springframework.boot.context.properties.EnableConfigurationProperties
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
 
 @Configuration
 @EnableConfigurationProperties(JwtProperties::class)
 class Configuration {
+
     @Bean
     fun encoder(): PasswordEncoder = BCryptPasswordEncoder()
 

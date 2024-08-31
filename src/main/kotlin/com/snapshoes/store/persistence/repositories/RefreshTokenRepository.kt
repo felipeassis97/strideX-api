@@ -1,4 +1,4 @@
-package com.snapshoes.store.persistense.repositories
+package com.snapshoes.store.persistence.repositories
 
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Repository

@@ -1,6 +1,5 @@
-package com.snapshoes.store.persistense.entities
+package com.snapshoes.store.persistence.entities
 
-import java.time.LocalDate
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
