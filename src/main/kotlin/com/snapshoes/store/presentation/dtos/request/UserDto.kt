@@ -1,6 +1,6 @@
 package com.snapshoes.store.presentation.dtos.request
 
-import com.snapshoes.store.persistense.entities.UserRole
+import com.snapshoes.store.persistence.entities.UserRole
 
 data class UserDto(
     val id: Long?,

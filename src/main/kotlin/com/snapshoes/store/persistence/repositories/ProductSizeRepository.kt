@@ -1,6 +1,6 @@
-package com.snapshoes.store.persistense.repositories
+package com.snapshoes.store.persistence.repositories
 
-import com.snapshoes.store.persistense.entities.ProductSize
+import com.snapshoes.store.persistence.entities.ProductSize
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param

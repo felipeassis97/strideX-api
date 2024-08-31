@@ -2,7 +2,7 @@ package com.snapshoes.store.presentation.dtos.mappers
 
 import com.snapshoes.store.config.interfaces.Mapper
 import org.springframework.stereotype.Component
-import com.snapshoes.store.persistense.entities.*
+import com.snapshoes.store.persistence.entities.*
 import com.snapshoes.store.presentation.dtos.request.store.CreateStoreDto
 import com.snapshoes.store.presentation.dtos.response.store.StoreDto
 
@@ -39,7 +39,5 @@ class StoreMapper(
             address = dto.address?.let { addressMapper.updateFormToEntity(it) }
         )
     }
-
-
 }
 

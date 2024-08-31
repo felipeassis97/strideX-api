@@ -3,9 +3,8 @@ package com.snapshoes.store.presentation.dtos.mappers
 import com.snapshoes.store.config.interfaces.Mapper
 import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Component
-import com.snapshoes.store.persistense.entities.Product
-import com.snapshoes.store.persistense.entities.ProductGenre
-import com.snapshoes.store.presentation.dtos.request.common.CreateGenreDto
+import com.snapshoes.store.persistence.entities.Product
+import com.snapshoes.store.persistence.entities.ProductGenre
 import com.snapshoes.store.presentation.dtos.response.common.GenreDto
 import com.snapshoes.store.presentation.dtos.response.product.ProductGenreDto
 

@@ -1,4 +1,4 @@
-package com.snapshoes.store.persistense.entities
+package com.snapshoes.store.persistence.entities
 
 enum class UserRole(val role: String) {
     ADMIN(role = "ADMIN"),

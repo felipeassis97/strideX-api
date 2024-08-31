@@ -22,6 +22,12 @@ flyway:
   locations: classpath:db/migration
 
 jwt:
-  secret: 3cfa76ef14937c1c0ea519f8fc057a80fcd04a7420f8e8bcd0a7567c272e007b
-  access_token_expiration: 3600000
-  refresh_token_expiration: 86400000
+  secret: ${JWT_SECRET}
+  access_token_expiration: ${TOKEN_EXPIRATION}
+  refresh_token_expiration: ${TOKEN_REFRESH}
+
+s3:
+  access: ${S3_ACCESS}
+  secret:  ${S3_SECRET}
+  bucket:  ${S3_BUCKET}
+  region:  ${S3_REGION}

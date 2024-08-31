@@ -2,7 +2,7 @@ package com.snapshoes.store.presentation.dtos.mappers
 
 import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Component
-import com.snapshoes.store.persistense.entities.*
+import com.snapshoes.store.persistence.entities.*
 import com.snapshoes.store.config.interfaces.Mapper
 import com.snapshoes.store.presentation.dtos.request.product.CreateProductDto
 import com.snapshoes.store.presentation.dtos.response.product.ProductDto

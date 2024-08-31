@@ -1,8 +1,8 @@
 package com.snapshoes.store.presentation.dtos.mappers
 
 import com.snapshoes.store.config.interfaces.Mapper
-import com.snapshoes.store.persistense.entities.User
-import com.snapshoes.store.persistense.entities.UserRole
+import com.snapshoes.store.persistence.entities.User
+import com.snapshoes.store.persistence.entities.UserRole
 import com.snapshoes.store.presentation.dtos.request.UserDto
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component

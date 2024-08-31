@@ -5,7 +5,7 @@ import org.springframework.cache.annotation.Cacheable
 import org.springframework.cache.annotation.CacheEvict
 import com.snapshoes.store.config.exceptions.NotFoundException
 import com.snapshoes.store.presentation.dtos.mappers.SizeMapper
-import com.snapshoes.store.persistense.repositories.SizeRepository
+import com.snapshoes.store.persistence.repositories.SizeRepository
 import com.snapshoes.store.presentation.dtos.response.common.SizeDto
 import com.snapshoes.store.presentation.dtos.request.common.CreateSizeDto
 

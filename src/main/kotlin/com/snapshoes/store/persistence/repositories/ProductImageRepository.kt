@@ -1,9 +1,9 @@
-package com.snapshoes.store.persistense.repositories
+package com.snapshoes.store.persistence.repositories
 
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
 import org.springframework.data.jpa.repository.Modifying
-import com.snapshoes.store.persistense.entities.ProductImage
+import com.snapshoes.store.persistence.entities.ProductImage
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface ProductImageRepository : JpaRepository<ProductImage, Long> {

@@ -5,9 +5,9 @@ import org.springframework.cache.annotation.Cacheable
 import org.springframework.cache.annotation.CacheEvict
 import com.snapshoes.store.config.exceptions.NotFoundException
 import com.snapshoes.store.presentation.dtos.mappers.GenreMapper
-import com.snapshoes.store.persistense.repositories.GenreRepository
+import com.snapshoes.store.persistence.repositories.GenreRepository
 import com.snapshoes.store.presentation.dtos.response.common.GenreDto
-import com.snapshoes.store.persistense.repositories.ProductGenreRepository
+import com.snapshoes.store.persistence.repositories.ProductGenreRepository
 import com.snapshoes.store.presentation.dtos.request.common.CreateGenreDto
 
 @Service

@@ -2,9 +2,8 @@ package com.snapshoes.store.service
 
 import com.snapshoes.store.config.exceptions.TokenNotRefreshed
 import com.snapshoes.store.config.security.JwtProperties
-import com.snapshoes.store.persistense.repositories.RefreshTokenRepository
+import com.snapshoes.store.persistence.repositories.RefreshTokenRepository
 import com.snapshoes.store.presentation.dtos.request.auth.AuthRequestDto
-import com.snapshoes.store.presentation.dtos.request.auth.RefreshTokenRequestDto
 import com.snapshoes.store.presentation.dtos.response.auth.AuthResponseDto
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
