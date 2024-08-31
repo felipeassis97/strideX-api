@@ -1,6 +1,6 @@
 package com.snapshoes.store.service
 
-import com.snapshoes.store.config.exceptions.TokenNotRefreshed
+import com.snapshoes.store.config.exceptions.RefreshTokenException
 import com.snapshoes.store.config.security.JwtProperties
 import com.snapshoes.store.persistence.repositories.RefreshTokenRepository
 import com.snapshoes.store.presentation.dtos.request.auth.AuthRequestDto
@@ -54,7 +54,7 @@ class AuthService(
             if (!tokenService.isExpired(token) && currentUserDetails.username == refreshTokenUser?.username)
                 generateAccessToken(currentUserDetails)
             else
-                throw TokenNotRefreshed("Error while refreshing token")
+                throw RefreshTokenException("Error while refreshing token")
         }
     }
 }

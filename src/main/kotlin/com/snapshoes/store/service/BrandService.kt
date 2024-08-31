@@ -10,9 +10,6 @@ import com.snapshoes.store.persistence.repositories.ProductRepository
 import com.snapshoes.store.presentation.dtos.response.common.BrandDto
 import com.snapshoes.store.presentation.dtos.request.common.CreateBrandDto
 
-
-
-
 @Service
 class BrandService(
     private val brandMapper: BrandMapper,

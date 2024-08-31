@@ -35,7 +35,6 @@ class ProductService(
     private val productSizeRepository: ProductSizeRepository,
     private val productGenreRepository: ProductGenreRepository,
     private val productImageRepository: ProductImageRepository,
-    private val userDetailsService: UserService
 
 ) {
     @Cacheable(cacheNames = ["Products"], key = "#root.method.name")
@@ -190,7 +189,6 @@ class ProductService(
             }
             productGenreRepository.saveAll(productGenres)
         }
-
         //Save product updated
         productRepository.save(product)
     }

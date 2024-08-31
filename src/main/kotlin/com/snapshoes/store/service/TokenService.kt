@@ -14,11 +14,8 @@ import java.util.Base64
 class TokenService(
     private val jwtProperties: JwtProperties
 ) {
-
     fun getKey(): Key =
-        Keys.hmacShaKeyFor(
-            jwtProperties.secret.toByteArray()
-        )
+        Keys.hmacShaKeyFor(jwtProperties.secret.toByteArray())
 
     fun generateToken(
         userDetails: UserDetails,
@@ -47,11 +44,8 @@ class TokenService(
             .subject
     }
 
-
-
     fun isValid(token: String, userDetails: UserDetails): Boolean {
         val email = extractEmail(token)
-
         return userDetails.username == email && !isExpired(token)
     }
 
@@ -63,7 +57,6 @@ class TokenService(
         val parser = Jwts.parser()
             .verifyWith(secretKey)
             .build()
-
         return parser.parseSignedClaims(token).payload
     }
 }
